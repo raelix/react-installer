@@ -1,0 +1,15 @@
+version: "2"
+services:
+
+  web:
+    image: node
+    container_name: engine 
+    hostname: engine
+    volumes:
+      - ../:/node/dev/
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+      - "2222:22"
+    working_dir: /node/dev/react-installer/
+    command: bash -c "./init-script.sh"
