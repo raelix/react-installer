@@ -10,6 +10,6 @@ services:
     ports:
       - "3000:3000"
       - "3001:3001"
-      - "2222:22"
+      - "34:22"
     working_dir: /node/dev/react-installer/
     command: bash -c "./init-script.sh"
