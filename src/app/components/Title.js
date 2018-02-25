@@ -8,7 +8,7 @@ class Title extends React.Component {
     return (
       <AppBar
         onLeftIconButtonClick={onClickLeftMenu}
-        title="Title"
+        title="Installer"
         iconClassNameRight="muidocs-icon-navigation-expand-more"
       />
     );

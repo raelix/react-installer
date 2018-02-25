@@ -1,5 +1,7 @@
-import { combineReducers } from 'redux'
-
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import TableExampleComplex from '../../components/Table';
+import { Provider, connect } from 'react-redux'
 
 
 var tableData = [
@@ -61,44 +63,15 @@ var tableData = [
   },
 ];
 
-const tabSection = (state = {section: ''}, action) => {
-  console.log(action);
-  switch (action.type) {
-    case 'onActive':
-      return  {
-          section: action.section
-        }
-    default:
-      return state
+function mapToTable(state) {
+  return {
+    datas: state.tabContent.datas
   }
 }
-const tabVisibilty = (state = {toggle : true}, action) => {
-  console.log(action);
-  switch (action.type) {
-    case 'click':
-      return  {
-          toggle: !state.toggle
-        }
-    default:
-      return state
-  }
-}
-const tabContent = (state = {datas: tableData}, action) => {
-  console.log(action);
-  switch (action.type) {
-    case 'onActive':
-      return  {
-          datas: action.datas
-        }
-    default:
-      return state
-  }
-}
+const TableContent = connect(
+  mapToTable
+)(TableExampleComplex)
 
-const installerPage = combineReducers({
-  tabSection,
-  tabVisibilty,
-  tabContent
-})
 
-export default installerPage
+
+export default TableContent;

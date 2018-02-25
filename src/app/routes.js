@@ -1,20 +1,25 @@
 import React from 'react';
 import { Router, Switch, Route } from 'react-router';
 import history from './history';
-import Installer from './containers/Installer';
+import App from './containers/Installer/App';
 import {render} from 'react-dom';
 import { Component } from 'react'
-import PropTypes from 'prop-types'
-import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import installerPage from './reducers';
+
+let store = createStore(installerPage)
 
 const AppRoutes = React.createClass({
   render: function() {
     return (
+       <Provider store={store}>
       <Router history={history}>
         <Switch>
-          <Route path="/*" component={Installer} />
+          <Route path="/*" component={App} />
         </Switch>
       </Router>
+      </Provider>
     );
   }
 });
