@@ -1,6 +1,10 @@
 import { combineReducers } from 'redux'
-
-
+import {
+  MENU_LABEL,
+  CLICK_LEFT_MENU,
+  CHANGED_SECTION,
+  UPDATE_TABLE_DATA
+} from './actions'
 
 var tableData = [
   {
@@ -64,7 +68,7 @@ var tableData = [
 const tabSection = (state = {section: ''}, action) => {
   console.log(action);
   switch (action.type) {
-    case 'onActive':
+    case CHANGED_SECTION:
       return  {
           section: action.section
         }
@@ -75,7 +79,7 @@ const tabSection = (state = {section: ''}, action) => {
 const tabVisibilty = (state = {toggle : true}, action) => {
   console.log(action);
   switch (action.type) {
-    case 'click':
+    case CLICK_LEFT_MENU:
       return  {
           toggle: !state.toggle
         }
@@ -86,7 +90,7 @@ const tabVisibilty = (state = {toggle : true}, action) => {
 const tabContent = (state = {datas: tableData}, action) => {
   console.log(action);
   switch (action.type) {
-    case 'onActive':
+    case CHANGED_SECTION:
       return  {
           datas: action.datas
         }
