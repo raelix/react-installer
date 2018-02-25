@@ -45,7 +45,7 @@ export default class TableExampleComplex extends Component {
   };
 
   render() {
-    const { datas } = this.props
+    const { data } = this.props
     return (
       <div>
         <Table
@@ -71,7 +71,7 @@ export default class TableExampleComplex extends Component {
             deselectOnClickaway={this.state.deselectOnClickaway}
             showRowHover={this.state.showRowHover}
           >
-            {datas.map( (row, index) => (
+            {data.map( (row, index) => (
               <TableRow key={index}>
                 <TableRowColumn>{index}</TableRowColumn>
                 <TableRowColumn>{row.name}</TableRowColumn>

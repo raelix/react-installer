@@ -3,6 +3,7 @@ import { Provider, connect } from 'react-redux';
 import Header from '../../components/Header';
 import Title from '../../components/Title';
 import {clickLeftMenu} from '../../actions';
+import {changedSection} from '../../actions';
 
 var menuLabel = {
   'names': [ 'EMS', 'E-XMS', 'Intellisight' ],
@@ -11,7 +12,7 @@ var menuLabel = {
 
 function titleClickDispatcher(dispatch) {
   return {
-    onClickLeftMenu: () => dispatch(clickLeftMenu)
+    onClickLeftMenu: () => dispatch(clickLeftMenu())
   }
 }
 
@@ -23,11 +24,12 @@ const TitleClick = connect(
 
 function onMenuSectionClicked(dispatch) {
   return {
-    onSectionClicked: (section) => dispatch(section)
+    onSectionClicked: (section) => dispatch(changedSection(section))
   }
 }
 
 function showMenu(state) {
+  console.log(state.tabVisibilty);
   return {
     show: state.tabVisibilty.toggle
   }

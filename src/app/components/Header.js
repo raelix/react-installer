@@ -10,8 +10,10 @@ const styles = {
     fontWeight: 400,
   },
 };
-
-const hide = {
+const showTab = {
+    display: 'block',
+};
+const hideTab = {
     display: 'none',
 };
 
@@ -19,20 +21,20 @@ class Header extends Component {
   render() {
     const { show, onSectionClicked } = this.props
     return (
-      <Tabs style={ this.props.show == true ? '' : hide}>
+      <Tabs style={ this.props.show === true ? showTab : hideTab }>
    <Tab label={this.props.profileData.names[0]}
-   onActive={() => onSectionClicked( {type:'onActive',section:this.props.profileData.names[0]}) } >
+   onActive={() => onSectionClicked(this.props.profileData.names[0]) } >
      <div>
      </div>
    </Tab>
    <Tab label={this.props.profileData.names[1]}
-   onActive={() => onSectionClicked( {type:'onActive',section:this.props.profileData.names[1]}) } >
+   onActive={() => onSectionClicked( this.props.profileData.names[1]) } >
      <div>
      </div>
    </Tab>
    <Tab
      label={this.props.profileData.names[2]}
-     onActive={() => onSectionClicked( {type:'onActive',section:this.props.profileData.names[2]}) } >
+     onActive={() => onSectionClicked( this.props.profileData.names[2]) } >
      <div>
      </div>
    </Tab>

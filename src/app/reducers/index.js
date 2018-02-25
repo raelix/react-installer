@@ -3,10 +3,13 @@ import {
   MENU_LABEL,
   CLICK_LEFT_MENU,
   CHANGED_SECTION,
-  UPDATE_TABLE_DATA
-} from './actions'
+  UPDATE_TABLE_DATA,
+  changedSection,
+  clickLeftMenu,
+  updateTableData
+} from '../actions'
 
-var tableData = [
+export const TABLE_DATA = [
   {
     name: 'John Smith',
     status: 'Employed',
@@ -65,8 +68,7 @@ var tableData = [
   },
 ];
 
-const tabSection = (state = {section: ''}, action) => {
-  console.log(action);
+const tabSection = (state = changedSection(''), action) => {
   switch (action.type) {
     case CHANGED_SECTION:
       return  {
@@ -76,8 +78,7 @@ const tabSection = (state = {section: ''}, action) => {
       return state
   }
 }
-const tabVisibilty = (state = {toggle : true}, action) => {
-  console.log(action);
+const tabVisibilty = (state = clickLeftMenu(), action) => {
   switch (action.type) {
     case CLICK_LEFT_MENU:
       return  {
@@ -87,12 +88,11 @@ const tabVisibilty = (state = {toggle : true}, action) => {
       return state
   }
 }
-const tabContent = (state = {datas: tableData}, action) => {
-  console.log(action);
+const tabContent = (state = updateTableData(TABLE_DATA), action) => {
   switch (action.type) {
-    case CHANGED_SECTION:
+    case UPDATE_TABLE_DATA:
       return  {
-          datas: action.datas
+          data: action.data
         }
     default:
       return state
