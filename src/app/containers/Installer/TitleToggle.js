@@ -4,11 +4,7 @@ import Header from '../../components/Header';
 import Title from '../../components/Title';
 import {clickLeftMenu} from '../../actions';
 import {changedSection} from '../../actions';
-
-var menuLabel = {
-  'names': [ 'EMS', 'E-XMS', 'Intellisight' ],
-  'show': true
-}
+import {MENU_LABEL} from '../../define';
 
 function titleClickDispatcher(dispatch) {
   return {
@@ -29,7 +25,6 @@ function onMenuSectionClicked(dispatch) {
 }
 
 function showMenu(state) {
-  console.log(state.tabVisibilty);
   return {
     show: state.tabVisibilty.toggle
   }
@@ -45,7 +40,7 @@ class TitleToggle extends Component {
     return (
         <div>
         <TitleClick />
-        <TabClick profileData={menuLabel} />
+        <TabClick profileData={MENU_LABEL} />
         </div>
     );
   }

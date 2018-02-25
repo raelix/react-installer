@@ -7,7 +7,7 @@ const App = () => (
   <MuiThemeProvider>
     <div>
       <TitleToggle />
-      <TableFilter />
+        <TableFilter />
     </div>
   </MuiThemeProvider>
 )

@@ -1,72 +1,16 @@
 import { combineReducers } from 'redux'
+import {TABLE_DATA, FUNCTIONALITIES} from '../define'
 import {
   MENU_LABEL,
   CLICK_LEFT_MENU,
   CHANGED_SECTION,
   UPDATE_TABLE_DATA,
+  CHANGE_LEFT_MENU_LIST,
   changedSection,
   clickLeftMenu,
-  updateTableData
+  updateTableData,
+  changeLeftMenuList
 } from '../actions'
-
-export const TABLE_DATA = [
-  {
-    name: 'John Smith',
-    status: 'Employed',
-  },
-  {
-    name: 'Randal White',
-    status: 'Unemployed',
-  },
-  {
-    name: 'Stephanie Sanders',
-    status: 'Employed',
-  },
-  {
-    name: 'Steve Brown',
-    status: 'Employed',
-  },
-  {
-    name: 'Joyce Whitten',
-    status: 'Employed',
-  },
-  {
-    name: 'Samuel Roberts',
-    status: 'Employed',
-  },
-  {
-    name: 'Adam Moore',
-    status: 'Employed',
-  },
-  {
-    name: 'Adam Moore',
-    status: 'Employed',
-  },
-  {
-    name: 'Adam Moore',
-    status: 'Employed',
-  },
-  {
-    name: 'Adam Moore',
-    status: 'Employed',
-  },
-  {
-    name: 'Adam Moore',
-    status: 'Employed',
-  },
-  {
-    name: 'Adam Moore',
-    status: 'Employed',
-  },
-  {
-    name: 'Adam Moore',
-    status: 'Employed',
-  },
-  {
-    name: 'Adam Moore',
-    status: 'Employed',
-  },
-];
 
 const tabSection = (state = changedSection(''), action) => {
   switch (action.type) {
@@ -99,10 +43,22 @@ const tabContent = (state = updateTableData(TABLE_DATA), action) => {
   }
 }
 
+const onChangeLeftMenuList = (state = changeLeftMenuList(FUNCTIONALITIES), action) => {
+  switch (action.type) {
+    case CHANGE_LEFT_MENU_LIST:
+      return  {
+          data: action.data
+        }
+    default:
+      return state
+  }
+}
+
 const installerPage = combineReducers({
   tabSection,
   tabVisibilty,
-  tabContent
+  tabContent,
+  onChangeLeftMenuList
 })
 
 export default installerPage
